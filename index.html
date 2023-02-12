@@ -6,12 +6,47 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="/main.js" defer></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <title>Library</title>
 </head>
 
 <body>
-  <h1>Library</h1>
+  <div class="container dFlex">
+    <div class="header">
+      <h1>Library</h1>
+      <form class="dFlex" id="formId">
+        <legend>Add a book to the library!</legend>
+        <fieldset class="inputGroup dFlex">
+          <div class="inputLabel dFlex">
+            <label for="title">Title of the book</label>
+            <input type="text" name="title" id="title" required>
+          </div>
+          <div class="inputLabel dFlex">
+            <label for="ath">Name of the Author</label>
+            <input type="text" name="ath" id="ath" required>
+          </div>
+          <div class="inputLabel dFlex">
+            <label for="pages">Number of Pages</label>
+            <input type="text" name="pages" id="pages" required>
+          </div>
+          <div class="inputLabel dFlex">
+            <label for="read?">Read it?</label>
+            <input type="text" name="read?" id="read?" required>
+          </div>
+          <div class="btn">
+            <button type="submit">New Book</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="cards-section">
+
+    </div>
+  </div>
+
+
 </body>
 
 </html>

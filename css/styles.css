@@ -1,0 +1,83 @@
+@font-face {}
+
+* {
+  box-sizing: border-box;
+}
+
+.dFlex {
+  display: flex;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(240, 239, 233);
+  font-family: Roboto;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  padding: 20px 0;
+
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  box-shadow: 5px 5px 4px lightgray;
+  background-color: gray;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 450px;
+  border-radius: 10px;
+}
+
+legend {
+  margin: 10px 0;
+  font-size: large;
+  text-align: center;
+}
+
+.inputGroup {
+  flex-wrap: wrap;
+  border: none;
+  gap: 20px;
+  justify-content: center;
+}
+
+.inputLabel {
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+input {
+  height: 30px;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: 1px solid lightblue;
+  box-shadow: 5px 3px 5px lightgray;
+}
+
+button {
+  width: 200px;
+  margin: 10px 0;
+  padding: 12px 20px;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
+  box-shadow: 5px 3px 5px lightgray;
+  font-size: medium;
+  background-color: black;
+  color: #fff;
+}

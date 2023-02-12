@@ -1,4 +1,9 @@
 console.log('Hello Library!');
+const $form = document.getElementById('formId');
+const $title = document.getElementById('title');
+const $nameAth = document.getElementById('ath');
+const $pages = document.getElementById('pages');
+const $read = document.getElementById('read?');
 
 const myLibrary = [];
 
@@ -14,6 +19,15 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(book) {
+  $form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log(`${$title.value}; ${$nameAth.value}; ${$pages.value}; ${$read.value}`);
+    $title.textContent = ' ';
+    $nameAth.textContent = ' ';
+    $pages.textContent = ' ';
+    $read.textContent = ' ';
+  });
+
   myLibrary.push(book);
 }
 const orgasmicMan = new Book('El hombre multiorgasmico', 'Mantak Chia', '268', 'no read');
