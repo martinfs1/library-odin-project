@@ -4,7 +4,8 @@ const $nameAth = document.getElementById('ath');
 const $pages = document.getElementById('pages');
 const $read = document.getElementById('read?');
 const $cards = document.getElementById('cards-container');
-
+let cardToremove
+let cardsToShow = [];
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -36,18 +37,23 @@ function addBookToLibrary() {
 }
 
 function displayLibrary(array) {
-  array.forEach((element) => {
-    console.log(myLibrary);
-    const card = `
-      <div class="card">
-        <h2>Title:${element.title}</h2>
-        <p>Author: ${element.author}</p>
-        <p>Pages: ${element.pages}</p>
-        <p>Read: ${element.read}</p>
-      </div>`;
+  cardsToShow = myLibrary;
+  array.forEach(element => {
+    card = `
+    <div class="book-card" data-id>
+    <h2>Title:${element.title}</h2>
+          <p>Author: ${element.author}</p>
+          <p>Pages: ${element.pages}</p>
+          <p>Read: ${element.read}</p>
+          <button>Remove</button>
+          </div>`;
     $cards.innerHTML += card;
-  });
+    cardToremove = document.querySelector('.book-card');
+    cardToremove.dataset.id = element.title
+    cardsToShow.shift();
+  })
 }
+
 
 document.addEventListener('submit', (event) => {
   event.preventDefault();
