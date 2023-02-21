@@ -6,7 +6,8 @@ const $read = document.getElementById('read?');
 const $cards = document.getElementById('cards-container');
 
 let card;
-let $cardToRemove;
+let $readStatusTochange;
+let $cardToTarget;
 let cardsToShow = [];
 const myLibrary = [];
 
@@ -44,8 +45,9 @@ function displayLibrary(array) {
     <div class="book-card" data-id>
     <h2>Title:${element.title}</h2>
     <p>Author: ${element.author}</p>
-    <p>Pages: ${element.pages}</p>
-    <p>Read: ${element.read}</p>
+    <p>Pages: ${element.pages}</p>    
+    <p id='read'>Read: ${element.read}</p>
+    <button class="toggle-btn" type="button">Read? Yes/No </button>    
     <button class="remove-btn" type="button">Remove</button>
     </div>`;
     $cards.innerHTML += card;
@@ -66,6 +68,18 @@ function removeBook() {
   })
 }
 
+function toggleReadStatus() {
+  let index = $readStatusTochange.dataset.id;
+  let $pRead = $readStatusTochange.querySelector('#read')
+  if (myLibrary[index].read === 'si') {
+    myLibrary[index].read = 'no'
+    $pRead.textContent = `Read: ${myLibrary[index].read}`
+  } else {
+    myLibrary[index].read = 'si'
+    $pRead.textContent = `Read: ${myLibrary[index].read}`
+  }
+}
+
 document.addEventListener('click', (event) => {
   if (event.target.matches('.newBook-btn')) {
     event.preventDefault();
@@ -75,7 +89,11 @@ document.addEventListener('click', (event) => {
     $cardToRemove = event.target.parentNode;
     removeBook()
     console.log(myLibrary);
+  } else if (event.target.closest('.toggle-btn')) {
+    $readStatusTochange = event.target.parentNode;
+    toggleReadStatus()
   }
+
 });
 
 
