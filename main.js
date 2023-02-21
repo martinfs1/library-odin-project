@@ -4,11 +4,11 @@ const $nameAth = document.getElementById('ath');
 const $pages = document.getElementById('pages');
 const $read = document.getElementById('read?');
 const $cards = document.getElementById('cards-container');
+
 let card;
-let $cardToremove;
+let $cardToRemove;
 let cardsToShow = [];
 const myLibrary = [];
-let cardId = 0;
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -40,7 +40,6 @@ function addBookToLibrary() {
 
 function displayLibrary(array) {
   array.forEach(element => {
-
     card = `
     <div class="book-card" data-id>
     <h2>Title:${element.title}</h2>
@@ -51,21 +50,20 @@ function displayLibrary(array) {
     </div>`;
     $cards.innerHTML += card;
     card = $cards.lastElementChild;
-    card.dataset.id = cardId;
-    cardId++
+    card.dataset.id = myLibrary.length;
     myLibrary.push(element);
     cardsToShow.shift();
-
   })
 }
 
 function removeBook() {
-  let index = $cardToremove.dataset.id
-  console.log(index);
-  $cardToremove.remove()
+  let index = $cardToRemove.dataset.id
   myLibrary.splice(index, 1)
-  console.log(myLibrary);
-
+  $cardToRemove.remove()
+  let cardsToSetNewID = document.querySelectorAll('.book-card')
+  cardsToSetNewID.forEach((card, index) => {
+    card.dataset.id = index;
+  })
 }
 
 document.addEventListener('click', (event) => {
@@ -74,8 +72,10 @@ document.addEventListener('click', (event) => {
     addBookToLibrary();
     displayLibrary(cardsToShow);
   } else if (event.target.matches('.remove-btn')) {
-    $cardToremove = event.target.parentNode;
+    $cardToRemove = event.target.parentNode;
     removeBook()
+    console.log(myLibrary);
   }
-
 });
+
+
