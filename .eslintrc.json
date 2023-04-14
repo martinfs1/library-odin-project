@@ -12,6 +12,6 @@
     },
     "rules": {
       "no-console":"off",
-      "allowForLoopAfterthoughts": true
+      "allowForLoopAfterthoughts": 0
     }
 }

@@ -8,7 +8,7 @@ const $cards = document.getElementById('cards-container');
 let card;
 let $readStatusTochange;
 let $cardToTarget;
-let cardsToShow = [];
+const cardsToShow = [];
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -35,12 +35,12 @@ function addBookToLibrary() {
   const pages = $pages.value;
   const read = $read.value;
   const book = new Book(title, nameAth, pages, read);
-  cardsToShow.push(book)
+  cardsToShow.push(book);
   resetInputs();
 }
 
 function displayLibrary(array) {
-  array.forEach(element => {
+  array.forEach((element) => {
     card = `
     <div class="book-card" data-id>
     <h2>Title:${element.title}</h2>
@@ -55,28 +55,28 @@ function displayLibrary(array) {
     card.dataset.id = myLibrary.length;
     myLibrary.push(element);
     cardsToShow.shift();
-  })
+  });
 }
 
 function removeBook() {
-  let index = $cardToRemove.dataset.id
-  myLibrary.splice(index, 1)
-  $cardToRemove.remove()
-  let cardsToSetNewID = document.querySelectorAll('.book-card')
+  const index = $cardToRemove.dataset.id;
+  myLibrary.splice(index, 1);
+  $cardToRemove.remove();
+  const cardsToSetNewID = document.querySelectorAll('.book-card');
   cardsToSetNewID.forEach((card, index) => {
     card.dataset.id = index;
-  })
+  });
 }
 
 function toggleReadStatus() {
-  let index = $readStatusTochange.dataset.id;
-  let $pRead = $readStatusTochange.querySelector('#read')
+  const index = $readStatusTochange.dataset.id;
+  const $pRead = $readStatusTochange.querySelector('#read');
   if (myLibrary[index].read === 'si') {
-    myLibrary[index].read = 'no'
-    $pRead.textContent = `Read: ${myLibrary[index].read}`
+    myLibrary[index].read = 'no';
+    $pRead.textContent = `Read: ${myLibrary[index].read}`;
   } else {
-    myLibrary[index].read = 'si'
-    $pRead.textContent = `Read: ${myLibrary[index].read}`
+    myLibrary[index].read = 'si';
+    $pRead.textContent = `Read: ${myLibrary[index].read}`;
   }
 }
 
@@ -87,13 +87,10 @@ document.addEventListener('click', (event) => {
     displayLibrary(cardsToShow);
   } else if (event.target.matches('.remove-btn')) {
     $cardToRemove = event.target.parentNode;
-    removeBook()
+    removeBook();
     console.log(myLibrary);
   } else if (event.target.closest('.toggle-btn')) {
     $readStatusTochange = event.target.parentNode;
-    toggleReadStatus()
+    toggleReadStatus();
   }
-
 });
-
-
