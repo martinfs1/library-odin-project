@@ -7,19 +7,20 @@ const $cards = document.getElementById('cards-container');
 
 let card;
 let $readStatusTochange;
-let $cardToTarget;
 const cardsToShow = [];
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  // eslint-disable-next-line func-names
-  this.info = function () {
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  info() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read} yet`;
-  };
+  }
 }
 
 function resetInputs() {
@@ -79,6 +80,7 @@ function toggleReadStatus() {
     $pRead.textContent = `Read: ${myLibrary[index].read}`;
   }
 }
+let $cardToRemove;
 
 document.addEventListener('click', (event) => {
   if (event.target.matches('.newBook-btn')) {

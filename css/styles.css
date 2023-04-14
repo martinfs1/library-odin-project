@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+
 .dFlex {
   display: flex;
 }
@@ -20,7 +21,7 @@
 .header {
   height: 100%;
   width: 100%;
-  background-color: rgb(240, 239, 233);
+  background-color: blanchedalmond;
   padding: 20px 0;
   flex-direction: column;
 }
@@ -93,4 +94,8 @@ button {
   padding: 5px;
   flex-direction: column;
   background-color: blueviolet;
+}
+
+body {
+  background-color: cadetblue;
 }
